@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ChangePassword</title>
+<link rel="stylesheet" href="styles/Styles.css">
+</head>
+
+<body background="images/ibm_background_orig.jpg">
+ <!--  <div class="imgcontainer">
+  <img src="images/sbi-logo.png" style="position:relative right:20px" height="50px" width="100px" alt="ibm_logo" class="ibm_logo">  
+</div>
+ -->
+
+<form class="log-form" action="LoginCheck" method="post">
+    
+       <!--  <legend class="leg">Change Directory Server Password</legend>  -->
+        <div id="err_msg" class="errmsg"></div>
+        <br/> <br/>
+		<p><input placeholder="Enter LDAP Username"  type="text" name="username" required/>
+		<input placeholder="Enter current password" type="password" name="userpass" required/></p>
+		<p>
+        <input type="password" placeholder="New Password" id="password" name="password" required>
+        <input type="password" placeholder="Confirm Password" id="confirm_password" required>
+        </p>
+
+        <button type="submit" class="btn">Confirm</button>
+    
+</form>
+
+<div class="passpolicy">
+The Password should contain:<br />
+1) Atleast one special character<br />
+2) Atleast one capital letter<br />
+3) Atleast one number<br />
+4) Password should not be from the 3 recent passwords<br />
+
+</div>
+
+<script type="text/javascript">
+var password = document.getElementById("password"),confirm_password = document.getElementById("confirm_password");
+
+function validatePassword() {
+if (password.value != confirm_password.value) {
+confirm_password.setCustomValidity("Passwords Don't Match");
+} else {
+confirm_password.setCustomValidity("");
+}
+}
+
+password.onchange = validatePassword;
+
+confirm_password.onkeyup = validatePassword;
+</script>
+</body>
+</html>
