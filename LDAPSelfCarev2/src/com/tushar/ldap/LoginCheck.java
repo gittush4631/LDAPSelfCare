@@ -126,7 +126,27 @@ public class LoginCheck extends HttpServlet {
 	   
 	   request.getRequestDispatcher("/index.html").include(request, response);
 	   
+	   }catch(javax.naming.NoPermissionException ex) {
+		   logger.info("Permission issue");
+		   ex.printStackTrace();
+		   //sc.getRequestDispatcher("/Failed.html").forward(request, response);
+		  /*String errmsg=e.getMessage();
+		  System.out.println("Error msg : "+errmsg);
+		 if(errmsg.contains("Invalid Credentials")) { }*/
+			 out.println("<html>");
+		     out.println("<body>");
+		     out.println("<div class=\"errmsg\">Insufficient Access Rights</h1></div>");
+			 out.println("</body>");
+			  out.println("</html>");
+		 
+		 
+			  
+		  
+		   
+		   request.getRequestDispatcher("/index.html").include(request, response);
+		   
 	   }
+	   
 	   catch(Exception e) {
 		   logger.info("login exception");
 		   e.printStackTrace();
